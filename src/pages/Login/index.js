@@ -14,7 +14,7 @@ export const Login = () => {
         password:"",
     });
 
-    const { logIn, googleSignIn } = useUserAuth();
+    const { logIn, googleSignIn, logInPersintense } = useUserAuth();
     const navigate = useNavigate();
 
     const { email, password } = formValues;
@@ -25,12 +25,14 @@ export const Login = () => {
         try {
             
             await logIn(email, password);
+            await logInPersintense();
             navigate("/home");
             console.log(logIn);
 
         } catch (error) {
             
             setError(error.message)
+            console.log({error})
             
         }
     }
