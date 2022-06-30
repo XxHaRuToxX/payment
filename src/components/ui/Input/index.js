@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 
 import { ContentCard } from '../ContentCard';
+import { ContentCardIndex} from '../ContentCardIndex'
 
 import './input.css';
 
@@ -16,6 +17,8 @@ export const Input = () => {
 
     return (
         <>
+       
+           <div className='card-notices'>
             <div className="d-flex flex-row p-3 justify-content-center align-items-center">
                 <p className="me-3 mt-3 fs-5 fw-bold" style={{color:(!inputLabel) ? colorSpan[0] : colorSpan[1]}}>Plan Estándar</p>
                 <Form>
@@ -28,6 +31,12 @@ export const Input = () => {
                 <p className="ms-3 mt-3 fs-5 fw-bold" style={{color:(!inputLabel) ? colorSpan[1] : colorSpan[0]}}>Plan Premium</p>
             </div>
             <ContentCard changeContent={!inputLabel} />
-        </>
+           </div>
+
+    <div className='card-notices-index'>
+            
+        <ContentCardIndex changeContent={!inputLabel} />
+    </div>
+</>
     )
 }

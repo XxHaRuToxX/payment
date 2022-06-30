@@ -5,6 +5,8 @@ import './contentCard.css';
 
 export const ContentCard = ({changeContent}) => {
     return (
+        <>
+
         <Card style={{ width: '25rem' }}>
             <Card.Header className="d-flex flex-column justify-content-center align-items-center">
                 <div className="d-flex flex-row justify-content-center align-items-center">
@@ -22,5 +24,7 @@ export const ContentCard = ({changeContent}) => {
             </Card.Body>
             <Button className="w-100 rounded-0 card_button">Suscribirme</Button>
         </Card>
+
+</>
     )
 }

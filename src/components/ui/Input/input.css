@@ -2,3 +2,20 @@
     height: 2.5em !important;
     width: 5em !important;
 }
+
+.card-notices{
+    display: none;
+}
+.card-notices-index{
+    display: block;
+}
+
+@media(max-width:800px){
+    .card-notices{
+        display: block;
+    }
+    .card-notices-index{
+        display: none;
+    }
+}
+
