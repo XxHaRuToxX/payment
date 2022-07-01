@@ -18,25 +18,24 @@ export const UserAuthContextProvider = ({children})=>{
 
     const [user, setUser] = useState("");
     const [pending, setPending] = useState(true);
-    const [isLogged, setIsLogged] = useState(false);
-    const [isVerified, setIsVerified] = useState(false);
 
     const signUp = (email, password)=>{
         return createUserWithEmailAndPassword( auth, email, password);
     }
 
-    // const logIn = (email, password)=>{
-    //     return signInWithEmailAndPassword( auth, email, password);
-    // }
     const logIn = (email, password)=>{
-        setIsLogged(true);
-        setIsVerified(true);
-        return setPersistence( auth, browserLocalPersistence, signInWithEmailAndPassword(auth, email, password));
+        return signInWithEmailAndPassword( auth, email, password);
+    }
+    // const logIn = (email, password)=>{
+    //     setIsLogged(true);
+    //     setIsVerified(true);
+    //     return setPersistence( auth, browserLocalPersistence, signInWithEmailAndPassword(auth, email, password));
+    // }
+    const logInPersintense = ()=>{
+        return setPersistence( auth, browserLocalPersistence);
     }
 
     const logOut = ()=>{
-        setIsLogged(false);
-        setIsVerified(false);
         return signOut(auth);
     }
 
@@ -73,8 +72,7 @@ export const UserAuthContextProvider = ({children})=>{
                 logIn,
                 logOut,
                 googleSignIn,
-                isLogged,
-                isVerified,
+                logInPersintense,
             }}
         >
             {children}

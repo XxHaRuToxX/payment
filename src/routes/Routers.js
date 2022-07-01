@@ -8,7 +8,7 @@ import { UserAuthContextProvider } from '../context/UserAuthContextProvider';
 // import { ProtectedRoute } from './ProtectedRoute';
 import { News } from '../pages/News';
 import { PrivateRoute } from './PrivateRoute';
-import { Card } from '../components/Card';
+// import { Card } from '../components/Card';
 
 export const Routers = () => {
 
@@ -39,7 +39,7 @@ export const Routers = () => {
                                 } 
                             /> */}
 
-                            {/*     <Route path="/card" element={<Card />} /> */}
+                            {/* <Route path="/" element={<Card/>} /> */}
                             <Route path="/" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
                             <Route path="*" element={<Navigate to={"/"} />} />
