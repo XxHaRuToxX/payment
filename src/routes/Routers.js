@@ -9,6 +9,7 @@ import { News } from '../pages/News';
 import { NewsDetails } from '../pages/NewsDetails';
 import { PrivateRoute } from './PrivateRoute';
 import Carrito from '../pages/Carrito';
+import { Perfil } from '../pages/Perfil';
 
 export const Routers = () => {
 
@@ -23,6 +24,7 @@ export const Routers = () => {
                                 <Route path="/news" element={<News />} />
                                 <Route path="/news/:id" element={<NewsDetails />} />
                                 <Route path="/carrito" element={<Carrito />} />
+                                <Route path="/perfil" element={<Perfil />} />
                             </Route>
                             <Route path="/" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />

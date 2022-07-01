@@ -19,10 +19,10 @@ export const NewsDetails = () => {
     }, [id]);
 
     function addToCart() {
+        console.log(carrito);
         setCarrito([...carrito, planInfo]);
         /*   console.log("PRIMER CARRO" + carrito); */
     }
-
 
     return (
         <div>
