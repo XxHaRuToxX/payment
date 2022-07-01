@@ -5,10 +5,10 @@ import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Signup } from '../pages/Signup';
 import { UserAuthContextProvider } from '../context/UserAuthContextProvider';
-// import { ProtectedRoute } from './ProtectedRoute';
 import { News } from '../pages/News';
+import { NewsDetails } from '../pages/NewsDetails';
 import { PrivateRoute } from './PrivateRoute';
-// import { Card } from '../components/Card';
+import Carrito from '../pages/Carrito';
 
 export const Routers = () => {
 
@@ -21,25 +21,9 @@ export const Routers = () => {
                             <Route element={<PrivateRoute />} >
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/news" element={<News />} />
+                                <Route path="/news/:id" element={<NewsDetails />} />
+                                <Route path="/carrito" element={<Carrito />} />
                             </Route>
-                            {/* <Route 
-                                path="/home" 
-                                element={
-                                    <ProtectedRoute>
-                                        <Home/>
-                                    </ProtectedRoute>
-                                } 
-                            />
-                            <Route 
-                                path="/news" 
-                                element={
-                                    <ProtectedRoute>
-                                        <News/>
-                                    </ProtectedRoute>
-                                } 
-                            /> */}
-
-                            {/* <Route path="/" element={<Card/>} /> */}
                             <Route path="/" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
                             <Route path="*" element={<Navigate to={"/"} />} />

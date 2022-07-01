@@ -7,9 +7,9 @@ import { useForm } from '../../hooks/useForm'
 export const Signup = () => {
 
     const [error, setError] = useState("");
-    const [ formValues, handleInputChange ] = useForm({
-        email:"",
-        password:"",
+    const [formValues, handleInputChange] = useForm({
+        email: "",
+        password: "",
     });
 
     const { signUp } = useUserAuth();
@@ -17,18 +17,18 @@ export const Signup = () => {
 
     const { email, password } = formValues;
 
-    const handleSubmit = async (e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-            
+
             await signUp(email, password);
             navigate("/");
 
         } catch (error) {
-            
+
             setError(error.message)
-            
+
         }
     }
 
@@ -41,19 +41,19 @@ export const Signup = () => {
                 }
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control 
-                            type="email" 
-                            placeholder="Email address" 
-                            onChange={handleInputChange} 
+                        <Form.Control
+                            type="email"
+                            placeholder="Email address"
+                            onChange={handleInputChange}
                             name="email"
                             value={email}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control 
-                            type="password" 
-                            placeholder="Password" 
-                            onChange={handleInputChange} 
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={handleInputChange}
                             name="password"
                             value={password}
                         />

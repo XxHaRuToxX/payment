@@ -1,47 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
-
 import { ContentCard } from '../ContentCard';
-import { ContentCardIndex} from '../ContentCardIndex'
+import { ContentCardIndex } from '../ContentCardIndex'
 
 import './input.css';
-
-
+import getActivePlanes from '../../../functions/getActivePlanes';
 
 export const Input = () => {
     const [inputLabel, setInputLabel] = useState(false);
 
+    const [planes, setPlanes] = useState(null);
 
+    useEffect(() => {
+        async function getPlanes() {
+            const planes = await getActivePlanes();
+            setPlanes(planes);
+        }
 
-    const colorSpan = ["#000000", "#6E6E6E"]
-
-    const handleOnChange = (e) => {
-        setInputLabel(e.target.checked)
-    }
+        getPlanes();
+    }, []);
 
     return (
         <>
-       
-           <div className='card-notices'>
-            <div className="d-flex flex-row p-3 justify-content-center align-items-center">
-                <p className="me-3 mt-3 fs-5 fw-bold" style={{ color: (!inputLabel) ? colorSpan[0] : colorSpan[1] }}>Plan Estándar</p>
-
-                <Form>
-                    <Form.Check
-                        type="switch"
-                        id="custom-switch"
-                        onChange={handleOnChange}
-                    />
-                </Form>
-                <p className="ms-3 mt-3 fs-5 fw-bold" style={{ color: (!inputLabel) ? colorSpan[1] : colorSpan[0] }}>Plan Premium</p>
-            </div>
-            <ContentCard changeContent={!inputLabel} />
-           </div>
-
-    <div className='card-notices-index'>
-            
-        <ContentCardIndex changeContent={!inputLabel} />
-    </div>
-</>
+            <ul className='d-flex'>
+                {planes ? planes.map((p) =>
+                    <li key={p.id} className="list-unstyled m-5">
+                        <ContentCardIndex changeContent={!inputLabel} plan={p} />
+                    </li>
+                ) : null}
+            </ul>
+        </>
     )
 }
