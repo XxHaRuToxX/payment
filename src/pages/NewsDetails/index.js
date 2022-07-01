@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import getPlansByIs from '../../functions/getPlansByID';
 import { useCarritoContext } from '../../context/CarritoContext';
-/* import { UserAuthContextProvider } from '../../context/UserAuthContextProvider'; */
 
 export const NewsDetails = () => {
 
@@ -10,8 +9,7 @@ export const NewsDetails = () => {
 
     const [planInfo, setPlanInfo] = useState(null);
     const { carrito, setCarrito } = useCarritoContext();
-    /*    const { user } = UserAuthContextProvider();
-    */
+
     useEffect(() => {
         async function getPlanInfo() {
             const plan = await getPlansByIs(id);
@@ -22,16 +20,9 @@ export const NewsDetails = () => {
 
     function addToCart() {
         setCarrito([...carrito, planInfo]);
+        /*   console.log("PRIMER CARRO" + carrito); */
     }
 
-    /*  function isAuthenticated() {
-         if (user) {
-             //correr funcion de comprar
-         }
-         if (!user) {
-             //mostrar modal de login
-         }
-     } */
 
     return (
         <div>
@@ -40,7 +31,6 @@ export const NewsDetails = () => {
                 <button className='btn bg-orange-600'>carrito</button>
             </Link>
             <p>{planInfo?.description}</p>
-
             <button
                 onClick={addToCart}
                 className='btn bg-black text-white'>

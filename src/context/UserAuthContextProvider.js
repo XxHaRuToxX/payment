@@ -26,11 +26,7 @@ export const UserAuthContextProvider = ({ children }) => {
     const logIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
-    // const logIn = (email, password)=>{
-    //     setIsLogged(true);
-    //     setIsVerified(true);
-    //     return setPersistence( auth, browserLocalPersistence, signInWithEmailAndPassword(auth, email, password));
-    // }
+
     const logInPersintense = () => {
         return setPersistence(auth, browserLocalPersistence);
     }
@@ -45,10 +41,6 @@ export const UserAuthContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        // onAuthStateChanged(auth, (currentUser)=>{
-        //     setUser(currentUser);
-        //     setPending(false);
-        // });
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setPending(false);
@@ -62,7 +54,6 @@ export const UserAuthContextProvider = ({ children }) => {
     if (pending) {
         return <>Pending...</>
     }
-
 
     return (
         <userAuthContext.Provider
@@ -81,5 +72,9 @@ export const UserAuthContextProvider = ({ children }) => {
 }
 
 export const useUserAuth = () => {
-    return useContext(userAuthContext);
+    const context = useContext(userAuthContext);
+    if (!context) {
+        throw new Error("useUserAuth must be used within a UserAuthContextProvider");
+    }
+    return context;
 }
